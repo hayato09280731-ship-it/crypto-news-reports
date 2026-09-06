@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>週間マーケットレポート（2026年8月27日〜9月1日）</title>
+<style>
+  :root {
+    --accent: #f2c800;
+    --ink: #2b2b2b;
+    --sub: #595959;
+    --line: #e5e5e5;
+    --bg: #ffffff;
+    --panel: #fafafa;
+    --chart-blue: #2a78d6;
+    --chart-fill: rgba(42, 120, 214, 0.08);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Segoe UI", Meiryo, sans-serif;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+  }
+  header {
+    border-bottom: 4px solid #000;
+    padding: 40px 0 24px;
+    margin-bottom: 32px;
+  }
+  header .label {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+  }
+  header h1 {
+    font-size: 26px;
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+  }
+  header .period {
+    color: var(--sub);
+    font-size: 14px;
+  }
+  .summary {
+    background: var(--panel);
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    font-size: 15px;
+  }
+  .summary p { margin: 0; }
+  section { margin-bottom: 44px; }
+  section > h2 {
+    font-size: 19px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  section > h2 .num {
+    color: #000;
+    background: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 2px 8px;
+  }
+  article.subblock {
+    margin-bottom: 26px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  article.subblock:last-child { border-bottom: none; padding-bottom: 0; }
+  article.subblock h3 {
+    font-size: 16px;
+    margin: 0 0 10px;
+    color: #1a1a1a;
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+  }
+  article.subblock p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  ul.events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.events li {
+    padding: 14px 16px;
+    background: var(--panel);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  ul.events li strong {
+    color: #000;
+    border-bottom: 2px solid var(--accent);
+  }
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    color: var(--sub);
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 21px; }
+    section > h2 { font-size: 17px; }
+    .wrap { padding: 0 14px 40px; }
+  }
+  .talknote {
+    margin-top: 8px;
+    padding: 22px 24px;
+    background: var(--panel);
+    border: 1px dashed #999;
+    border-radius: 4px;
+  }
+  .talknote .talknote-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #000;
+    background: var(--accent);
+    padding: 3px 9px;
+    margin-bottom: 12px;
+  }
+  .talknote p {
+    font-size: 15px;
+    color: var(--ink);
+    margin: 0 0 20px;
+  }
+  .talknote p:last-child { margin-bottom: 0; }
+  .chartcard {
+    margin-bottom: 32px;
+    padding: 20px 24px 12px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .chartcard h2 {
+    font-size: 15px;
+    margin: 0 0 2px;
+    color: var(--ink);
+  }
+  .chartcard .chart-sub {
+    font-size: 12px;
+    color: var(--sub);
+    margin: 0 0 8px;
+  }
+  .chartcard svg { display: block; width: 100%; height: auto; }
+  .chartcard .chart-note {
+    font-size: 11px;
+    color: var(--sub);
+    margin: 6px 0 0;
+  }
+  .chart-axis-label { font-size: 11px; fill: var(--sub); }
+  .chart-value-label { font-size: 12px; fill: var(--ink); font-weight: 700; }
+  .chart-grid { stroke: var(--line); stroke-width: 1; }
+  .chart-line { fill: none; stroke: var(--chart-blue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .chart-area { fill: var(--chart-fill); stroke: none; }
+  .chart-dot { fill: var(--chart-blue); stroke: #ffffff; stroke-width: 2; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="label">WEEKLY CRYPTO MARKET REPORT</span>
+  <h1>週間マーケットレポート</h1>
+  <div class="period">対象期間：2026年8月27日（木）〜2026年9月1日（火）</div>
+</header>
+
+<div class="chartcard">
+  <h2>BTC/USD価格推移</h2>
+  <p class="chart-sub">2026年8月27日（木）〜9月1日（火）</p>
+  <svg viewBox="0 0 680 210" role="img" aria-label="BTC価格は8月27日の8.10万ドルから8月28日に8.15万ドルまで上昇した後、8月29日に7.65万ドルまで下落。以降持ち直し、9月1日は7.80万ドルで推移。">
+    <line class="chart-grid" x1="40" y1="20" x2="640" y2="20"></line>
+    <text class="chart-axis-label" x="646" y="24">8.3万</text>
+    <line class="chart-grid" x1="40" y1="105" x2="640" y2="105"></line>
+    <text class="chart-axis-label" x="646" y="109">7.9万</text>
+    <line class="chart-grid" x1="40" y1="190" x2="640" y2="190"></line>
+    <text class="chart-axis-label" x="646" y="194">7.5万</text>
+
+    <path class="chart-area" d="M40,62.5 L156,51.9 L272,158.1 L388,105 L504,136.9 L620,126.3 L620,190 L40,190 Z"></path>
+    <path class="chart-line" d="M40,62.5 L156,51.9 L272,158.1 L388,105 L504,136.9 L620,126.3"></path>
+
+    <circle class="chart-dot" cx="40" cy="62.5" r="4"><title>8/27（木）：約8.10万ドル</title></circle>
+    <circle class="chart-dot" cx="156" cy="51.9" r="4"><title>8/28（金）：約8.15万ドル（週内高値）</title></circle>
+    <circle class="chart-dot" cx="272" cy="158.1" r="4"><title>8/29（土）：約7.65万ドル（週内安値）</title></circle>
+    <circle class="chart-dot" cx="388" cy="105" r="4"><title>8/30（日）：約7.90万ドル</title></circle>
+    <circle class="chart-dot" cx="504" cy="136.9" r="4"><title>8/31（月）：約7.75万ドル</title></circle>
+    <circle class="chart-dot" cx="620" cy="126.3" r="4"><title>9/1（火）：約7.80万ドル</title></circle>
+
+    <text class="chart-value-label" x="156" y="38" text-anchor="middle">8.15万</text>
+    <text class="chart-value-label" x="272" y="176" text-anchor="middle">7.65万</text>
+    <text class="chart-value-label" x="620" y="114" text-anchor="end">7.80万</text>
+
+    <text class="chart-axis-label" x="40" y="205" text-anchor="middle">8/27（木）</text>
+    <text class="chart-axis-label" x="156" y="205" text-anchor="middle">8/28（金）</text>
+    <text class="chart-axis-label" x="272" y="205" text-anchor="middle">8/29（土）</text>
+    <text class="chart-axis-label" x="388" y="205" text-anchor="middle">8/30（日）</text>
+    <text class="chart-axis-label" x="504" y="205" text-anchor="middle">8/31（月）</text>
+    <text class="chart-axis-label" x="620" y="205" text-anchor="middle">9/1（火）</text>
+  </svg>
+</div>
+
+<div class="summary">
+  <p>
+    ビットコイン（BTC）は8月27日から9月1日にかけて、7.7万ドル（約1,225万円）から8.1万ドル台半ば（約1,295万円）のレンジで推移し、中東情勢の緊張とFRBの金融政策見通しに振らされる神経質な展開となりました。<br>
+    週末にかけてはウォーシュFRB議長のタカ派発言や米イラン間の攻撃再開を受けて上値の重い展開となったものの、週明けにはストラテジー社やStrive社によるBTC買い増しが伝わり、底堅さを取り戻しています。
+  </p>
+</div>
+
+<section>
+  <h2><span class="num">1</span>ビットコイン（BTC）の推移と主な変動要因</h2>
+
+  <p>
+    BTCは200日移動平均線を上抜けた高値圏でのもみ合いから週を始め、8月27日は7.7万〜7.9万ドル台で推移しました。<br>
+    8月28日にはNVIDIAの好決算やチャールズ・シュワブによるアルトコイン取扱い発表を受けたリスクオン地合いから8.1万ドル台半ばまで上昇し、直近の戻り高値を更新しましたが、5月につけた戻り高値である8.2万ドル水準が上値の壁として意識され続けました。
+  </p>
+  <p>
+    8月29日のジャクソンホールでのウォーシュFRB議長講演が想定以上にタカ派的な内容となり、9月の利上げ観測が3割台から6割台へ急上昇。BTCは一時7.7万ドルを割り込む場面もありました。<br>
+    米国とイランの間で攻撃の応酬が再開したことも相場の重荷となりましたが、ストラテジー社のセイラー会長が購入再開を示唆したことなどが下支えとなり、行き過ぎた過熱感が解消される「健全な調整」の範囲内にとどまりました。
+  </p>
+  <p>
+    週が明けた9月1日には、ストラテジー社が2カ月ぶりとなるBTC購入（4,603BTC）に踏み切ったことに加え、Strive社も保有BTCの約8％にあたる1,800BTCを積み増したことが伝わり、下げ渋る展開となりました。<br>
+    米軍によるイランの機雷敷設装置への攻撃とこれに対するイランの報復を受けて原油価格が上昇し、BTCは一時7.7万ドル近辺まで軟化する場面もありましたが、日米欧同時の債券安を背景とした資金の逃避先としての買いも入り、7.8万ドル台へ持ち直しました。
+  </p>
+</section>
+
+<section>
+  <h2><span class="num">2</span>アルトコインおよび業界動向</h2>
+
+  <article class="subblock">
+    <h3>チャールズ・シュワブがソラナ・アバランチ・チェーンリンクの取扱いを開始</h3>
+    <p>米大手証券チャールズ・シュワブが、ソラナ、アバランチ、チェーンリンクの取扱いを新たに発表しました。発表直後にはソラナが1日で15％上昇するなど、BTCの上昇が一服する中でアルトコインへの物色買いが強まるきっかけとなっています。米大手金融機関による取扱い銘柄の拡大は、仮想通貨サービスの裾野が広がっていることを示す動きと言えます。</p>
+  </article>
+
+  <article class="subblock">
+    <h3>米大手銀行がステーブルコイン事業で相次いで動く</h3>
+    <p>JPモルガンが独自のステーブルコインを検討していると報じられたほか、バンク・オブ・アメリカやウェルズ・ファーゴなど十数行が共同でステーブルコイン事業を進めているとも伝えられました。米国のステーブルコイン規制法「GENIUS法」の施行を見据え、金融機関側の対応が本格化してきた格好です。</p>
+  </article>
+
+  <article class="subblock">
+    <h3>ストラテジー社が2カ月ぶりにBTC購入を再開</h3>
+    <p>ストラテジー社が6月末以来となるBTC購入に転じ、4,603BTCを新たに取得しました。同時期に発表したGoogleおよびClaudeとのAI関連イベントも好感され、同社株は1日で17％上昇。BTC追加購入の目安となる指標「mNAV」も上昇し、追加購入への期待が広がっています。</p>
+  </article>
+
+  <article class="subblock">
+    <h3>Strive社が保有BTCを8％積み増し</h3>
+    <p>ラマスワミ氏が率いるStrive社も、保有BTCの約8％に相当する1,800BTCを追加購入しました。優先株による資金調達を活用しており、同社の優先株価格も安値から回復しています。ストラテジー社以外にも「BTC財務戦略」を採る企業が広がりつつあることを示す事例です。</p>
+  </article>
+
+  <article class="subblock">
+    <h3>量子耐性ビットコインのテストが成功と報じられる</h3>
+    <p>ハードフォークを伴わない手法による量子耐性BTCのテストが成功したと伝えられました。ただし、あくまで実験段階であり、実用化に向けた課題も多く残っているとみられます。</p>
+  </article>
+</section>
+
+<section>
+  <h2><span class="num">3</span>今後の注目イベント</h2>
+  <ul class="events">
+    <li><strong>米雇用統計とFRBの金融政策判断</strong>：9月4日発表の雇用統計（非農業部門雇用者数・失業率）の結果は、9月FOMCでの利上げ判断を左右する重要な材料となります。</li>
+    <li><strong>米CPI（消費者物価指数）</strong>：レイバーデー明けの来週金曜日に発表予定で、雇用統計と合わせて金融政策の行方を見極める材料となります。</li>
+    <li><strong>中東情勢と原油価格</strong>：米国とイランの間での攻撃の応酬が続いており、原油価格の動向がBTCのリスクセンチメントに影響を与える可能性があります。</li>
+    <li><strong>Clarity法案の審議日程</strong>：11月の中間選挙を控えるなか、仮想通貨市場構造法案「Clarity法」の審議日程が選挙前に確保されるかどうかが注目されます。</li>
+    <li><strong>日米金利差とドル円相場の方向性</strong>：日本の長期金利上昇観測やベッセント財務長官の発言を背景に、ドル円相場、ひいては円建てBTC価格への影響が注目されます。</li>
+  </ul>
+</section>
+
+<div class="talknote">
+  <span class="talknote-label">会議トーク用カンペ（そのまま読む用）</span>
+  <p>では、今週の週間マーケットレポートについてご報告します。</p>
+  <p>
+    まず全体感です。<br>
+    ビットコインは8月27日から9月1日にかけて、7.7万ドルから8.1万ドル台半ば、日本円で約1,225万円から1,295万円のレンジで推移しました。<br>
+    中東情勢とFRBの発言に振らされる神経質な展開でしたが、週明けにはストラテジー社やStrive社の買い増しもあり、底堅さを取り戻しています。
+  </p>
+  <p>
+    値動きの流れです。<br>
+    週前半はNVIDIAの好決算やシュワブのアルトコイン取扱い発表でリスクオンとなり、8.1万ドル台まで上昇しました。<br>
+    週末はジャクソンホールでのウォーシュ議長のタカ派発言と、米イラン間の攻撃再開で反落しましたが、健全な調整の範囲内でした。<br>
+    週明けはストラテジー社が2カ月ぶりに4,603BTCを購入、Strive社も1,800BTCを積み増し、下げ渋る展開となっています。
+  </p>
+  <p>
+    アルトコイン・業界動向です。<br>
+    特に注目したいのは2点です。<br>
+    1つ目は、チャールズ・シュワブがソラナ、アバランチ、チェーンリンクの取扱いを開始したことです。発表直後にはソラナが1日で15％上昇するなど、大手証券による取扱い拡大がアルトコインへの物色買いを強めるきっかけとなりました。<br>
+    2つ目は、ストラテジー社が2カ月ぶりにBTC購入を再開したことです。4,603BTCを取得し、同時に発表したGoogleおよびClaudeとのAI関連イベントも好感されて同社株は1日で17％上昇、追加購入の目安となるmNAVも上昇しています。<br>
+    このほか、米大手銀行のステーブルコイン事業の動きや、量子耐性ビットコインのテスト成功なども話題になりました。
+  </p>
+  <p>まとめますと、大きく崩れる材料はなく、目先はイベント待ちの神経質な展開が続く見通しです。</p>
+  <p>以上でご報告を終わります。</p>
+</div>
+
+<footer>
+  作成日：2026年9月7日
+</footer>
+
+</div>
+</body>
+</html>
