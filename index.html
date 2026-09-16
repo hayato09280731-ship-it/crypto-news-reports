@@ -128,7 +128,7 @@
     /* Below this width the screen-share one-screen layout doesn't apply
        (assumed PC screen share); stack back to a normal readable column. */
     .screen-view .main-grid { grid-template-columns: 1fr; }
-    .screen-view .left-col section > p,
+    .screen-view .left-col > p,
     .screen-view .right-col article.subblock p { font-size: 15px; line-height: 1.7; }
   }
   .chartcard {
@@ -165,21 +165,18 @@
      for its full height, since Section 2 has more content than the chart+S1 pair. */
   .screen-view { display: flex; flex-direction: column; gap: 6px; }
   .screen-view .main-grid { display: grid; grid-template-columns: 43% 57%; gap: 18px; align-items: start; }
-  .screen-view .left-col { display: flex; flex-direction: column; gap: 9px; }
-  .screen-view .chartcard { margin: 0; padding: 8px 14px 6px; }
-  .screen-view .chartcard h2 { font-size: 13.5px; }
+  .screen-view .main-grid > section { margin: 0; }
+  .screen-view .left-col > h2,
+  .screen-view .right-col > h2 { font-size: 14px; padding-bottom: 4px; margin-bottom: 8px; }
+  .screen-view .left-col > h2 .num,
+  .screen-view .right-col > h2 .num { font-size: 11px; padding: 1px 7px; }
+  .screen-view .chartcard { margin: 0 0 10px; padding: 8px 14px 6px; }
   .screen-view .chartcard .chart-sub { font-size: 11px; margin-bottom: 4px; }
   .screen-view .chartcard svg { height: auto; width: 100%; }
-  .screen-view .left-col section,
-  .screen-view .right-col section { margin: 0; }
-  .screen-view .left-col section > h2,
-  .screen-view .right-col section > h2 { font-size: 14px; padding-bottom: 4px; margin-bottom: 7px; }
-  .screen-view .left-col section > h2 .num,
-  .screen-view .right-col section > h2 .num { font-size: 11px; padding: 1px 7px; }
-  .screen-view .left-col section > p { font-size: 11.5px; line-height: 1.48; margin-bottom: 7px; }
-  .screen-view .right-col article.subblock { margin-bottom: 7px; padding-bottom: 7px; }
-  .screen-view .right-col article.subblock h3 { font-size: 11.5px; margin-bottom: 3px; padding-left: 7px; }
-  .screen-view .right-col article.subblock p { font-size: 10.5px; line-height: 1.36; }
+  .screen-view .left-col > p { font-size: 11.5px; line-height: 1.48; margin-bottom: 7px; }
+  .screen-view .right-col article.subblock { margin-bottom: 10px; padding-bottom: 10px; }
+  .screen-view .right-col article.subblock h3 { font-size: 12px; margin-bottom: 4px; padding-left: 7px; }
+  .screen-view .right-col article.subblock p { font-size: 11px; line-height: 1.42; }
 </style>
 </head>
 <body>
@@ -193,10 +190,11 @@
 
 <div class="screen-view">
 <div class="main-grid">
-<div class="left-col">
-<div class="chartcard">
-  <h2>BTC/USD価格推移</h2>
-  <p class="chart-sub">2026年8月26日（水）〜9月1日（火）</p>
+<section class="left-col">
+  <h2><span class="num">1</span>ビットコイン（BTC）の推移と主な変動要因</h2>
+
+  <div class="chartcard">
+  <p class="chart-sub">BTC/USD価格推移（2026年8月26日〜9月1日）</p>
   <svg viewBox="0 0 680 140" role="img" aria-label="BTC価格は8月26日の7.90万ドルから8月28日に8.15万ドルまで上昇した後、8月29日に7.65万ドルまで下落。以降持ち直し、9月1日は7.80万ドルで推移。">
     <line class="chart-grid" x1="40" y1="15" x2="640" y2="15"></line>
     <text class="chart-axis-label" x="646" y="19">8.3万</text>
@@ -228,10 +226,7 @@
     <text class="chart-axis-label" x="540" y="133" text-anchor="middle">8/31（月）</text>
     <text class="chart-axis-label" x="640" y="133" text-anchor="middle">9/1（火）</text>
   </svg>
-</div>
-
-<section>
-  <h2><span class="num">1</span>ビットコイン（BTC）の推移と主な変動要因</h2>
+  </div>
 
   <p>
     BTCは6.7万ドルのレジスタンスを上抜けたのち、7万ドル近辺の200日移動平均線も上抜けて高値圏でのもみ合いから週を始めました。8月26日はイラン情勢を巡る外交交渉の進展や原油価格の下落を背景に一時8.1万ドルにワンタッチしたものの、5月の戻り高値である8.2万ドル水準を意識して7.8万〜7.9万ドル台でのもみ合いに終始しました。<br>
@@ -246,10 +241,8 @@
     米軍によるイランの機雷敷設装置への攻撃とこれに対するイランの報復を受けて原油価格が上昇し、BTCは一時7.7万ドル近辺まで軟化する場面もありましたが、日米欧同時の債券安を背景とした資金の逃避先としての買いも入り、7.8万ドル台へ持ち直しました。
   </p>
 </section>
-</div>
 
-<div class="right-col">
-<section>
+<section class="right-col">
   <h2><span class="num">2</span>アルトコインおよび業界動向</h2>
 
   <article class="subblock">
@@ -277,7 +270,6 @@
     <p>SBIホールディングスが、インドネシアのネット証券大手アジャイブグループに約430億円を投じて20%の株式を取得し、持分法適用会社とする方向であることが日本経済新聞の報道で明らかになりました。アジャイブは利用者300万人超に成長したジャカルタの投資プラットフォームで、ネット証券に加えFX取引や仮想通貨、資産運用事業を展開しています。SBIは自社の円建てステーブルコイン「JPYSC」の流通促進や仮想通貨事業の海外展開でアジャイブと協業する方針で、シンガポールのCoinhako子会社化など東南アジアでの布石を広げる動きの一環となります。</p>
   </article>
 </section>
-</div>
 </div>
 </div>
 
