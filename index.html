@@ -127,11 +127,9 @@
   @media (max-width: 900px) {
     /* Below this width the screen-share one-screen layout doesn't apply
        (assumed PC screen share); stack back to a normal readable column. */
-    .screen-view .chart-summary-row { flex-direction: column; }
-    .screen-view .sections-grid { grid-template-columns: 1fr; }
-    .screen-view .sections-grid section > p,
-    .screen-view .sections-grid article.subblock p,
-    .screen-view .summary { font-size: 15px; line-height: 1.7; }
+    .screen-view .main-grid { grid-template-columns: 1fr; }
+    .screen-view .left-col section > p,
+    .screen-view .right-col article.subblock p { font-size: 15px; line-height: 1.7; }
   }
   .chartcard {
     margin-bottom: 32px;
@@ -162,22 +160,26 @@
   .chart-area { fill: var(--chart-fill); stroke: none; }
   .chart-dot { fill: var(--chart-blue); stroke: #ffffff; stroke-width: 2; }
 
-  /* --- Screen-share view: header + chart + summary + section 1&2 fit one screen --- */
+  /* --- Screen-share view: header + chart + section 1&2 fit one screen ---
+     Left column stacks the chart and Section 1; right column holds Section 2
+     for its full height, since Section 2 has more content than the chart+S1 pair. */
   .screen-view { display: flex; flex-direction: column; gap: 6px; }
-  .screen-view .chart-summary-row { display: flex; gap: 18px; align-items: stretch; }
-  .screen-view .chartcard { flex: 0 0 44%; margin: 0; padding: 8px 14px 6px; }
-  .screen-view .chartcard h2 { font-size: 13px; }
-  .screen-view .chartcard .chart-sub { font-size: 10.5px; margin-bottom: 4px; }
+  .screen-view .main-grid { display: grid; grid-template-columns: 43% 57%; gap: 18px; align-items: start; }
+  .screen-view .left-col { display: flex; flex-direction: column; gap: 9px; }
+  .screen-view .chartcard { margin: 0; padding: 8px 14px 6px; }
+  .screen-view .chartcard h2 { font-size: 13.5px; }
+  .screen-view .chartcard .chart-sub { font-size: 11px; margin-bottom: 4px; }
   .screen-view .chartcard svg { height: auto; width: 100%; }
-  .screen-view .summary { flex: 1; margin: 0; padding: 8px 16px; font-size: 12px; line-height: 1.5; }
-  .screen-view .sections-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .screen-view .sections-grid section { margin: 0; }
-  .screen-view .sections-grid section > h2 { font-size: 12.5px; padding-bottom: 3px; margin-bottom: 4px; }
-  .screen-view .sections-grid section > h2 .num { font-size: 10px; padding: 1px 5px; }
-  .screen-view .sections-grid section > p { font-size: 10px; line-height: 1.24; margin-bottom: 3px; }
-  .screen-view .sections-grid article.subblock { margin-bottom: 2px; padding-bottom: 2px; }
-  .screen-view .sections-grid article.subblock h3 { font-size: 9.5px; margin-bottom: 1px; padding-left: 6px; }
-  .screen-view .sections-grid article.subblock p { font-size: 9px; line-height: 1.15; }
+  .screen-view .left-col section,
+  .screen-view .right-col section { margin: 0; }
+  .screen-view .left-col section > h2,
+  .screen-view .right-col section > h2 { font-size: 14px; padding-bottom: 4px; margin-bottom: 7px; }
+  .screen-view .left-col section > h2 .num,
+  .screen-view .right-col section > h2 .num { font-size: 11px; padding: 1px 7px; }
+  .screen-view .left-col section > p { font-size: 11.5px; line-height: 1.48; margin-bottom: 7px; }
+  .screen-view .right-col article.subblock { margin-bottom: 7px; padding-bottom: 7px; }
+  .screen-view .right-col article.subblock h3 { font-size: 11.5px; margin-bottom: 3px; padding-left: 7px; }
+  .screen-view .right-col article.subblock p { font-size: 10.5px; line-height: 1.36; }
 </style>
 </head>
 <body>
@@ -190,7 +192,8 @@
 </header>
 
 <div class="screen-view">
-<div class="chart-summary-row">
+<div class="main-grid">
+<div class="left-col">
 <div class="chartcard">
   <h2>BTC/USD価格推移</h2>
   <p class="chart-sub">2026年8月26日（水）〜9月1日（火）</p>
@@ -227,15 +230,6 @@
   </svg>
 </div>
 
-<div class="summary">
-  <p>
-    ビットコイン（BTC）は8月26日から9月1日にかけて、7.7万ドル（約1,225万円）から8.1万ドル台半ば（約1,295万円）のレンジで推移し、中東情勢の緊張とFRBの金融政策見通しに振らされる神経質な展開となりました。<br>
-    週末にかけてはウォーシュFRB議長のタカ派発言や米イラン間の攻撃再開を受けて上値の重い展開となったものの、週明けにはストラテジー社やStrive社によるBTC買い増しが伝わり、底堅さを取り戻しています。
-  </p>
-</div>
-</div>
-
-<div class="sections-grid">
 <section>
   <h2><span class="num">1</span>ビットコイン（BTC）の推移と主な変動要因</h2>
 
@@ -252,7 +246,9 @@
     米軍によるイランの機雷敷設装置への攻撃とこれに対するイランの報復を受けて原油価格が上昇し、BTCは一時7.7万ドル近辺まで軟化する場面もありましたが、日米欧同時の債券安を背景とした資金の逃避先としての買いも入り、7.8万ドル台へ持ち直しました。
   </p>
 </section>
+</div>
 
+<div class="right-col">
 <section>
   <h2><span class="num">2</span>アルトコインおよび業界動向</h2>
 
@@ -281,6 +277,7 @@
     <p>SBIホールディングスが、インドネシアのネット証券大手アジャイブグループに約430億円を投じて20%の株式を取得し、持分法適用会社とする方向であることが日本経済新聞の報道で明らかになりました。アジャイブは利用者300万人超に成長したジャカルタの投資プラットフォームで、ネット証券に加えFX取引や仮想通貨、資産運用事業を展開しています。SBIは自社の円建てステーブルコイン「JPYSC」の流通促進や仮想通貨事業の海外展開でアジャイブと協業する方針で、シンガポールのCoinhako子会社化など東南アジアでの布石を広げる動きの一環となります。</p>
   </article>
 </section>
+</div>
 </div>
 </div>
 
