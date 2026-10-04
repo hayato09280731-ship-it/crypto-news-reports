@@ -169,7 +169,7 @@
      Left column stacks the chart and Section 1; right column holds Section 2
      for its full height, since Section 2 has more content than the chart+S1 pair. */
   .screen-view { display: flex; flex-direction: column; gap: 6px; }
-  .screen-view .main-grid { display: grid; grid-template-columns: 43% 57%; gap: 18px; align-items: start; }
+  .screen-view .main-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 18px; align-items: start; }
   .screen-view .main-grid > section { margin: 0; }
   .screen-view .left-col > h2,
   .screen-view .right-col > h2 { font-size: 14px; padding-bottom: 4px; margin-bottom: 8px; }
